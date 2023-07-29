@@ -1,0 +1,36 @@
+{
+  "name": "yoursoul-backend",
+  "version": "0.0.1",
+  "description": "Try to not laugth",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "concurrently \"npm run scss:dev\" \"npm run babel:dev\" \"nodemon src/index.js\"",
+    "build": "npm run scss:build & npm run babel:build",
+    "launch": "npm run build & node src/index.js",
+    "babel:dev": "babel src/pages/scripts --watch --out-dir public/scripts --presets=@babel/preset-env",
+    "babel:build": "babel src/pages/scripts --out-dir public/scripts --presets=@babel/preset-env,minify",
+    "scss:dev": "sass src/pages/scss:public/styles --watch",
+    "scss:build": "sass src/pages/scss:public/styles --style compressed"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.1",
+    "peer": "^0.6.1",
+    "serve-static": "^1.15.0",
+    "socket.io": "^4.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "babel-minify": "^0.5.1",
+    "babel-preset-minify": "^0.5.1",
+    "concurrently": "^7.1.0",
+    "nodemon": "^2.0.16",
+    "sass": "^1.51.0"
+  }
+}
